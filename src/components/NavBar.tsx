@@ -3,8 +3,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import MainNav from '../styled_components/MainNav';
 import SlideInContainer from '../styled_components/SlideInContainer';
+import SlideOnHover from '../styled_components/SlideOnHover';
 import TextColoredPunct from '../styled_components/TextColorPunct';
 import ColoredPunct from '../styled_components/ColoredPunct';
+import RotateMe from '../styled_components/RotateMe';
 import Button from '../styled_components/Button';
 import HKWLogo from '../styled_components/HKWLogo';
 
@@ -18,9 +20,18 @@ const ContactButton = styled(Button)`
   z-index: 999;
 `
 
-const LetsTalk = styled(TextColoredPunct)`
+const ContactButtonSlideInContainer = styled(SlideInContainer)`
+  @media (min-width: 1081px) {
+    height: 2rem;
+    overflow: hidden;
+  }
+
+`
+
+const LetsTalk1 = styled(TextColoredPunct)`
   color: #fff;
   font-family: 'PFGrandGothik', sans-serif;
+  padding: 0.75rem 0;
   font-size: 20px;
   font-weight: 500;
   line-height: 100%;
@@ -34,6 +45,36 @@ const LetsTalk = styled(TextColoredPunct)`
   transform: translateY(5px);
   animation: slideInOpacityHero 1s forwards;
   animation-delay: 0.5s;
+  @media (min-width: 1081px) {
+    transform-origin: right center;
+  }
+`
+
+const LetsTalk2 = styled(LetsTalk1)`
+  display: none;
+  @media (min-width: 1081px) {
+    display: flex;
+    transform-origin: left center;
+    transform: rotate(0);
+  }
+`
+
+const RotateMe1 = styled(RotateMe)`
+  @media (min-width: 1081px) {
+    .slide-on-hover:hover & {
+        transform: rotate(20deg);
+    } 
+  }
+`
+const RotateMe2 = styled(RotateMe1)`
+  display: none;
+  @media (min-width: 1081px) {
+  display: flex;
+    transform: rotate(20deg);
+    .slide-on-hover:hover & {
+        transform: rotate(0deg);
+    }
+  } 
 `
 
 const NavBar: React.FC<NavBarProps> = ({ contactRef, setShowOverlay }) => {
@@ -70,11 +111,20 @@ const NavBar: React.FC<NavBarProps> = ({ contactRef, setShowOverlay }) => {
               onMouseEnter={() => setShowOverlay(true)} 
               onMouseLeave={() => setShowOverlay(false)} 
               onClick={() => handleScroll(contactRef)}>
-              <SlideInContainer>
-                <LetsTalk>
-                  Let's Talk<ColoredPunct>.</ColoredPunct>
-                </LetsTalk>
-              </SlideInContainer>
+              <ContactButtonSlideInContainer>
+                <SlideOnHover className="slide-on-hover">
+                  <LetsTalk1 className="letstalk-1">
+                    <RotateMe1>
+                      Let's Talk<ColoredPunct>.</ColoredPunct>
+                    </RotateMe1>
+                  </LetsTalk1>
+                  <LetsTalk2 className="letstalk-2">
+                    <RotateMe2>
+                    Let's Talk<ColoredPunct>.</ColoredPunct>
+                    </RotateMe2>
+                  </LetsTalk2>
+                </SlideOnHover>
+              </ContactButtonSlideInContainer>
             </ContactButton>
           </li>
         </ul>
