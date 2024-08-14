@@ -6,7 +6,7 @@ const SlideOnHover = styled.div`
     transition: transform 0.6s ease;
     transform: translateY(0) rotate(0);
     &:hover {
-      transform: translateY(-3rem);
+      transform: translateY(-2rem);
     }
   }
 `;

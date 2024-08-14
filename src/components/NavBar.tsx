@@ -22,7 +22,7 @@ const ContactButton = styled(Button)`
 
 const ContactButtonSlideInContainer = styled(SlideInContainer)`
   @media (min-width: 1081px) {
-    height: 2rem;
+    height: 1.25rem;
     overflow: hidden;
   }
 
@@ -31,7 +31,7 @@ const ContactButtonSlideInContainer = styled(SlideInContainer)`
 const LetsTalk1 = styled(TextColoredPunct)`
   color: #fff;
   font-family: 'PFGrandGothik', sans-serif;
-  padding: 0.75rem 0;
+  padding: 0;
   font-size: 20px;
   font-weight: 500;
   line-height: 100%;
@@ -52,6 +52,7 @@ const LetsTalk1 = styled(TextColoredPunct)`
 
 const LetsTalk2 = styled(LetsTalk1)`
   display: none;
+  padding: 0.75rem 0;
   @media (min-width: 1081px) {
     display: flex;
     transform-origin: left center;
