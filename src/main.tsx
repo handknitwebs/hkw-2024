@@ -1,38 +1,51 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import InvertedCursor from './styled_components/InvertedCursor.tsx'
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import InvertedCursor from './styled_components/InvertedCursor.tsx';
 
-// js to invert colors under cursor and also make it "lag"
-let cursorX = 0, cursorY = 0;
-let circleX = 0, circleY = 0;
-const speed = 0.2; // lag speed
+const CursorFollower = () => {
+  let cursorX = 0, cursorY = 0;
+  let circleX = 0, circleY = 0;
+  const speed = 0.1; // Adjust the speed of the lag
 
-document.body.onmousemove = function(e) {
-  cursorX = e.clientX + window.scrollX;
-  cursorY = e.clientY + window.scrollY;
+  useEffect(() => {
+    const updateCursorPosition = (e) => {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+    };
+
+    const animate = () => {
+      // Smoothly move the circle towards the cursor position
+      circleX += (cursorX - circleX) * speed;
+      circleY += (cursorY + window.scrollY - circleY) * speed;
+
+      // Update CSS variables to move the circle
+      document.documentElement.style.setProperty('--x', `${circleX}px`);
+      document.documentElement.style.setProperty('--y', `${circleY}px`);
+
+      // Continue the animation loop
+      requestAnimationFrame(animate);
+    };
+
+    // Attach event listeners
+    document.body.addEventListener('mousemove', updateCursorPosition);
+
+    // Start the animation loop
+    animate();
+
+    // Cleanup event listeners on unmount
+    return () => {
+      document.body.removeEventListener('mousemove', updateCursorPosition);
+    };
+  }, []);
+
+  return null; // This component doesn't render anything itself
 };
-
-function animate() {
-  // calculate the distance between the cursor and the circle
-  circleX += (cursorX - circleX) * speed;
-  circleY += (cursorY - circleY) * speed;
-
-  // update the CSS variables to move the circle
-  document.documentElement.style.setProperty('--x', `${circleX}px`);
-  document.documentElement.style.setProperty('--y', `${circleY}px`);
-
-  // continue the animation loop
-  requestAnimationFrame(animate);
-}
-
-// start the animation loop
-animate();
-
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <CursorFollower />
     <InvertedCursor />
     <App />
   </React.StrictMode>,
-)
+);
