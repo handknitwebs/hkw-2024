@@ -19,7 +19,7 @@ const App: React.FC = () => {
   const [theme] = useState<string>('dark');
 
   const contactRef = useRef<HTMLDivElement | null >(null);
-
+  
   return (
     <ThemeProvider theme={themeMap[theme]}>
       <GlobalStyles />
