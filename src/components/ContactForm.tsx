@@ -156,6 +156,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted
               selected={selectedProductTypes.some((pt: { label: string; value: string }) => pt.value === option.value)}
               onClick={() => toggleProductType(option)}
               type="button"
+              className="action"
             >
               {option.label}
             </MultiSelectButton>
@@ -198,7 +199,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted
           <TextArea defaultValue="" error={!!errors.project} {...register("project", { required: true })} />
           {errors.project && <ErrorMessage className="error-message">This is required</ErrorMessage>}
         </FormInputContainer>
-        <SubmitButton type="submit" isSubmitting={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send your message'}</SubmitButton>
+        <SubmitButton className="action" type="submit" isSubmitting={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send your message'}</SubmitButton>
       </Form>
     </>
   );

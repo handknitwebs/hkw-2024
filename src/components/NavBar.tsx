@@ -116,7 +116,7 @@ const NavBar: React.FC<NavBarProps> = ({ contactRef, setShowOverlay }) => {
               onMouseLeave={() => setShowOverlay(false)} 
               onClick={() => handleScroll(contactRef)}>
               <ContactButtonSlideInContainer>
-                <SlideOnHover className="slide-on-hover">
+                <SlideOnHover className="slide-on-hover action">
                   <LetsTalk1 className="letstalk-1">
                     <RotateMe1>
                       Let's Talk<ColoredPunct>.</ColoredPunct>
