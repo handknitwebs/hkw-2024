@@ -58,6 +58,9 @@ const LetsTalk2 = styled(LetsTalk1)`
     transform-origin: left center;
     transform: rotate(0);
   }
+  @media (min-width: 1440px) {
+    padding: 1rem;
+  }
 `
 
 const RotateMe1 = styled(RotateMe)`
