@@ -6,6 +6,9 @@ const RotateMe = styled.div`
         transition: transform 0.5s ease;
         transform: none;
     }
+    @media (min-width: 1440px) {
+        margin-bottom: 0.25rem;
+    }
 `;
 
 export default RotateMe;
