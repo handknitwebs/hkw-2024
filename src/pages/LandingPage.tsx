@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Home from "../sections/Home";
 import Services from "../sections/Services";
 import Contact from "../sections/Contact";
+import Quotes from "../sections/Quotes";
 
 interface LandingPageProps {
   contactRef: React.RefObject<HTMLDivElement>;
@@ -37,6 +38,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ contactRef }) => {
       <Home contactRef={contactRef} setShowOverlay={setShowOverlay} />
       <div></div>
       <Services />
+      <Quotes />
       <div ref={contactRef}></div>
       <Contact />
     </>

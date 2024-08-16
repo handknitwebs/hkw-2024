@@ -19,15 +19,12 @@ const ContactButton = styled(Button)`
   position: relative;
   z-index: 999;
 `
-
 const ContactButtonSlideInContainer = styled(SlideInContainer)`
   @media (min-width: 1081px) {
     height: 1.25rem;
     overflow: hidden;
   }
-
 `
-
 const LetsTalk1 = styled(TextColoredPunct)`
   color: #fff;
   font-family: 'PFGrandGothik', sans-serif;
@@ -49,7 +46,6 @@ const LetsTalk1 = styled(TextColoredPunct)`
     transform-origin: right center;
   }
 `
-
 const LetsTalk2 = styled(LetsTalk1)`
   display: none;
   padding: 0.75rem 0;
@@ -62,7 +58,6 @@ const LetsTalk2 = styled(LetsTalk1)`
     padding: 1rem;
   }
 `
-
 const RotateMe1 = styled(RotateMe)`
   @media (min-width: 1081px) {
     .slide-on-hover:hover & {
