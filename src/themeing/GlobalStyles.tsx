@@ -25,6 +25,8 @@ const GlobalStyles: React.FC = () => (
         font-family: "neue-haas-grotesk-display", sans-serif;
         font-weight: 400;
         font-style: normal;
+        overflow-x: hidden;
+
       },
       #root {
         display: grid;

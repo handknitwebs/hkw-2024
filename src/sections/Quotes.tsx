@@ -41,6 +41,9 @@ const Quotes: React.FC = () => {
         margin: 5rem 0;
         height: calc(100vh + ${quotes.length * 200}px);
         position: relative;
+        @media (max-width: 1080px) {
+            height: calc(100vh + ${quotes.length * 85}px);
+        }
     `;
 
     const QuotesContainer = styled(Container)<{ translateX: number, isSticky: boolean }>`
