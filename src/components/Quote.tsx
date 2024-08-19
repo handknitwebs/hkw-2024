@@ -10,15 +10,17 @@ interface QuoteProps {
         quote: string;
         author: string;
         role: string;
+        fontSize: string;
+        shift: string;
     };
-    fontSize: string;
 }
 
-const QuoteBlock = styled(Container)`
+const QuoteBlock = styled(Container)<{ shift: string; }>`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 20px;
+    margin: ${props => props.shift === "top" ? '-2rem 0 0 0' :  props.shift === "bottom" ? '0 0 -2rem 0' : 'auto'};
 `;
 
 const QuoteHolder = styled(Container)`
@@ -29,7 +31,6 @@ const QuoteHolder = styled(Container)`
 const QuoteText = styled(Text)<{ fontSize: string; }>`
     white-space: nowrap;
     font-weight: 500;
-    // margin: -1rem -0.5rem;
     margin-top: -7.5px;
     font-size: ${props => props.fontSize};
 `;
@@ -37,7 +38,7 @@ const QuoteText = styled(Text)<{ fontSize: string; }>`
 const Author = styled(Text)`
     font-size: 20px;
     font-weight: 500;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 `;
 
 const Role = styled(Text)`
@@ -47,9 +48,9 @@ const Role = styled(Text)`
     text-transform: uppercase;
 `;
 
-const Quote: React.FC<QuoteProps> = ({ quoteObject, fontSize }) => {
+const Quote: React.FC<QuoteProps> = ({ quoteObject }) => {
     return (
-        <QuoteBlock>
+        <QuoteBlock shift={quoteObject.shift}>
             <QuoteMark>
                 <svg xmlns="http://www.w3.org/2000/svg" width="49" height="43" viewBox="0 0 49 43" fill="none">
                     <g clip-path="url(#clip0_1009_1219)">
@@ -64,7 +65,7 @@ const Quote: React.FC<QuoteProps> = ({ quoteObject, fontSize }) => {
                 </svg>
             </QuoteMark>
             <QuoteHolder>
-                <QuoteText fontSize={fontSize}>
+                <QuoteText fontSize={quoteObject.fontSize}>
                     {quoteObject.quote}
                 </QuoteText>
                 <Author>
