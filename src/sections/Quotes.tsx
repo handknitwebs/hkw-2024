@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Section from '../styled_components/Section';
 import Container from '../styled_components/Container';
 import Quote from '../components/Quote';
+import Text from '../styled_components/Text';
 
 const Quotes: React.FC = () => {
     const quotes = [
@@ -66,31 +67,51 @@ const Quotes: React.FC = () => {
 
     let characterQuote = quotes[8]['quote'].length + quotes[9]['quote'].length + quotes[10]['quote'].length 
     const allQuotes1 = quotes.slice(0, 3).map((quote, key) => (
-        <Quote key={key} quoteObject={quote} />
+        <Quote key={key} quoteObject={quote} fontSize={'6.5rem'} />
     ));
 
     const allQuotes2 = quotes.slice(3, 9).map((quote, key) => (
-        <Quote key={key} quoteObject={quote} />
+        <Quote key={key} quoteObject={quote} fontSize={'7.5rem'} />
     ));
 
     const allQuotes3 = quotes.slice(9).map((quote, key) => (
-        <Quote key={key} quoteObject={quote} />
+        <Quote key={key} quoteObject={quote} fontSize={'7rem'}/>
     ));
 
     const QuotesSection = styled(Section)`
         margin: 5rem 0;
-        height: calc(100vh + ${(1.5 * characterQuote).toString()}rem);
+        height: calc(100vh + ${(0.75 * characterQuote).toString()}rem);
         position: relative;
         @media (max-width: 1080px) {
             height: calc(100vh + ${allQuotes2.length * 85}px);
         }
     `;
 
-    const QuotesDiv = styled(Container)<{ translateX: number, marginLeft: string; }>`
+    const QuotesTitle = styled(Text)`
+        color: #FDF4E2;
+        font-family: "pf-grand-gothik-variable", sans-serif;
+        font-variation-settings: "ital" 0, "wdth" 150, "wght" 900;    
+        font-size: 3.2rem;
+        font-style: normal;
+        font-weight: 900;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        @media (max-width: 1080px) {
+            font-size: 64px;
+            letter-spacing: -2px;
+        }
+        @media (max-width: 600px) {
+            font-size: 32px;
+            letter-spacing: -1px;
+        }
+    `
+
+    const QuotesDiv = styled(Container)<{ translateX: number, marginLeft: string }>`
         display: flex;
         gap: 4rem;
         transform: translateX(${props => `-${props.translateX}px`});
-        transition: transform 0.6s ease-in ease-out;
+        transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
         align-items: flex-start;
         margin-left: ${props => `${props.marginLeft}`};
     `;
@@ -118,9 +139,9 @@ const Quotes: React.FC = () => {
                 const scrollDistance = window.innerHeight - sectionRect.top;
 
                 // Adjust the multipliers for different speeds
-                setTranslateX1(scrollDistance * 1.75);
-                setTranslateX2(scrollDistance * 3.5);
-                setTranslateX3(scrollDistance * 1.5);
+                setTranslateX1(scrollDistance * 2.75);
+                setTranslateX2(scrollDistance * 5.25);
+                setTranslateX3(scrollDistance * 2.5);
             }
         };
 
@@ -131,6 +152,7 @@ const Quotes: React.FC = () => {
     return (
         <QuotesSection ref={sectionRef}>
             <QuotesContainer>
+                <QuotesTitle>Happy Kind Words</QuotesTitle>
                 <QuotesDiv translateX={translateX1} marginLeft={'100vw'}>
                     {allQuotes1}
                 </QuotesDiv>

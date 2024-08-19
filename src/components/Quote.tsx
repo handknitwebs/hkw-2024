@@ -11,6 +11,7 @@ interface QuoteProps {
         author: string;
         role: string;
     };
+    fontSize: string;
 }
 
 const QuoteBlock = styled(Container)`
@@ -25,11 +26,11 @@ const QuoteHolder = styled(Container)`
     flex-direction: column;
 `
 
-const QuoteText = styled(Text)`
-    font-size: 7.5rem;
+const QuoteText = styled(Text)<{ fontSize: string; }>`
     white-space: nowrap;
     font-weight: 500;
     margin: -1rem -0.5rem;
+    font-size: ${props => props.fontSize};
 `;
 
 const Author = styled(Text)`
@@ -45,7 +46,7 @@ const Role = styled(Text)`
     text-transform: uppercase;
 `;
 
-const Quote: React.FC<QuoteProps> = ({ quoteObject }) => {
+const Quote: React.FC<QuoteProps> = ({ quoteObject, fontSize }) => {
     return (
         <QuoteBlock>
             <QuoteMark>
@@ -62,7 +63,7 @@ const Quote: React.FC<QuoteProps> = ({ quoteObject }) => {
                 </svg>
             </QuoteMark>
             <QuoteHolder>
-                <QuoteText>
+                <QuoteText fontSize={fontSize}>
                     {quoteObject.quote}
                 </QuoteText>
                 <Author>
