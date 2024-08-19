@@ -29,7 +29,8 @@ const QuoteHolder = styled(Container)`
 const QuoteText = styled(Text)<{ fontSize: string; }>`
     white-space: nowrap;
     font-weight: 500;
-    margin: -1rem -0.5rem;
+    // margin: -1rem -0.5rem;
+    margin-top: -7.5px;
     font-size: ${props => props.fontSize};
 `;
 

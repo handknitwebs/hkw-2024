@@ -67,20 +67,20 @@ const Quotes: React.FC = () => {
 
     let characterQuote = quotes[8]['quote'].length + quotes[9]['quote'].length + quotes[10]['quote'].length 
     const allQuotes1 = quotes.slice(0, 3).map((quote, key) => (
-        <Quote key={key} quoteObject={quote} fontSize={'6.5rem'} />
+        <Quote key={key} quoteObject={quote} fontSize={'2.5rem'} />
     ));
 
     const allQuotes2 = quotes.slice(3, 9).map((quote, key) => (
-        <Quote key={key} quoteObject={quote} fontSize={'7.5rem'} />
+        <Quote key={key} quoteObject={quote} fontSize={'3.5rem'} />
     ));
 
     const allQuotes3 = quotes.slice(9).map((quote, key) => (
-        <Quote key={key} quoteObject={quote} fontSize={'7rem'}/>
+        <Quote key={key} quoteObject={quote} fontSize={'2rem'}/>
     ));
 
     const QuotesSection = styled(Section)`
         margin: 5rem 0;
-        height: calc(100vh + ${(0.75 * characterQuote).toString()}rem);
+        height: calc(100vh + ${(0.4 * characterQuote).toString()}rem);
         position: relative;
         @media (max-width: 1080px) {
             height: calc(100vh + ${allQuotes2.length * 85}px);
@@ -139,9 +139,9 @@ const Quotes: React.FC = () => {
                 const scrollDistance = window.innerHeight - sectionRect.top;
 
                 // Adjust the multipliers for different speeds
-                setTranslateX1(scrollDistance * 2.75);
+                setTranslateX1(scrollDistance * 2);
                 setTranslateX2(scrollDistance * 5.25);
-                setTranslateX3(scrollDistance * 2.5);
+                setTranslateX3(scrollDistance * 1.5);
             }
         };
 
@@ -156,10 +156,10 @@ const Quotes: React.FC = () => {
                 <QuotesDiv translateX={translateX1} marginLeft={'100vw'}>
                     {allQuotes1}
                 </QuotesDiv>
-                <QuotesDiv translateX={translateX2} marginLeft={'200vw'}>
+                <QuotesDiv translateX={translateX2} marginLeft={'250vw'}>
                     {allQuotes2}
                 </QuotesDiv>
-                <QuotesDiv translateX={translateX3} marginLeft={'125vw'}>
+                <QuotesDiv translateX={translateX3} marginLeft={'100vw'}>
                     {allQuotes3}
                 </QuotesDiv>
             </QuotesContainer>
