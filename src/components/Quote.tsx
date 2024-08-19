@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Container from '../styled_components/Container';
-import TextColoredPunct from '../styled_components/TextColorPunct';
 import Text from '../styled_components/Text';
 import QuoteMark from '../styled_components/QuoteMark';
 
@@ -12,11 +11,9 @@ interface QuoteProps {
         author: string;
         role: string;
     };
-    offset: number;
 }
 
-const QuoteBlock = styled(Container)<{ offset: number }>`
-    margin-left: ${props => `${props.offset}%`};
+const QuoteBlock = styled(Container)`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -28,15 +25,17 @@ const QuoteHolder = styled(Container)`
     flex-direction: column;
 `
 
-const QuoteText = styled(TextColoredPunct)`
-    font-size: 80px;
+const QuoteText = styled(Text)`
+    font-size: 7.5rem;
     white-space: nowrap;
     font-weight: 500;
+    margin: -1rem -0.5rem;
 `;
 
 const Author = styled(Text)`
     font-size: 20px;
     font-weight: 500;
+    margin-top: 1.5rem;
 `;
 
 const Role = styled(Text)`
@@ -46,9 +45,9 @@ const Role = styled(Text)`
     text-transform: uppercase;
 `;
 
-const Quote: React.FC<QuoteProps> = ({ quoteObject, offset }) => {
+const Quote: React.FC<QuoteProps> = ({ quoteObject }) => {
     return (
-        <QuoteBlock offset={offset}>
+        <QuoteBlock>
             <QuoteMark>
                 <svg xmlns="http://www.w3.org/2000/svg" width="49" height="43" viewBox="0 0 49 43" fill="none">
                     <g clip-path="url(#clip0_1009_1219)">

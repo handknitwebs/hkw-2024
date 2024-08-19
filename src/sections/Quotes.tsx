@@ -64,54 +64,63 @@ const Quotes: React.FC = () => {
         }
     ];
 
-    let offset = 0;
-    const allQuotes = quotes.map((quote, key) => {
-        offset += key === 0 ? 0 : 15;
-        return (
-            <Quote key={key} quoteObject={quote} offset={offset} />
-        );
-    });
+    let characterQuote = quotes[8]['quote'].length + quotes[9]['quote'].length + quotes[10]['quote'].length 
+    const allQuotes1 = quotes.slice(0, 3).map((quote, key) => (
+        <Quote key={key} quoteObject={quote} />
+    ));
+
+    const allQuotes2 = quotes.slice(3, 9).map((quote, key) => (
+        <Quote key={key} quoteObject={quote} />
+    ));
+
+    const allQuotes3 = quotes.slice(9).map((quote, key) => (
+        <Quote key={key} quoteObject={quote} />
+    ));
 
     const QuotesSection = styled(Section)`
         margin: 5rem 0;
-        height: calc(100vh + ${quotes.length * 200}px);
+        height: calc(100vh + ${(1.5 * characterQuote).toString()}rem);
         position: relative;
         @media (max-width: 1080px) {
-            height: calc(100vh + ${quotes.length * 85}px);
+            height: calc(100vh + ${allQuotes2.length * 85}px);
         }
     `;
 
-    const QuotesContainer = styled(Container)<{ translateX: number, isSticky: boolean }>`
+    const QuotesDiv = styled(Container)<{ translateX: number, marginLeft: string; }>`
+        display: flex;
+        gap: 4rem;
+        transform: translateX(${props => `-${props.translateX}px`});
+        transition: transform 0.6s ease-in ease-out;
+        align-items: flex-start;
+        margin-left: ${props => `${props.marginLeft}`};
+    `;
+
+    const QuotesContainer = styled(Container)`
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        align-items: flex-start; /* Ensure left alignment */
+        align-items: flex-start;
         height: 100vh;
-        transform: translateX(${props => `-${props.translateX}px`}); /* Scroll left as you scroll down */
-        transition: transform 0.1s ease-out; /* Smooth transition */
         width: 100%;
-        margin-left: 100vw;
-        position: ${props => (props.isSticky ? 'sticky' : 'relative')};
-        top: ${props => (props.isSticky ? '0' : 'auto')}; /* Sticky at the top */
+        position: sticky;
+        top: 0;
     `;
 
     const sectionRef = useRef<HTMLDivElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [translateX, setTranslateX] = useState(0);
-    const [isSticky, setIsSticky] = useState(false);
+    const [translateX1, setTranslateX1] = useState(0);
+    const [translateX2, setTranslateX2] = useState(0);
+    const [translateX3, setTranslateX3] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (sectionRef.current && containerRef.current) {
+            if (sectionRef.current) {
                 const sectionRect = sectionRef.current.getBoundingClientRect();
-                const containerRect = containerRef.current.getBoundingClientRect();
-                const scrollDistance = window.innerHeight - sectionRect.top; // Calculate scroll distance
+                const scrollDistance = window.innerHeight - sectionRect.top;
 
-                // Ensure the text moves left as you scroll down
-                setTranslateX(scrollDistance * 1.5); // Adjust the multiplier to control speed
-
-                // Check if the container has reached the top of the viewport
-                setIsSticky(containerRect.top <= 0);
+                // Adjust the multipliers for different speeds
+                setTranslateX1(scrollDistance * 1.75);
+                setTranslateX2(scrollDistance * 3.5);
+                setTranslateX3(scrollDistance * 1.5);
             }
         };
 
@@ -121,8 +130,16 @@ const Quotes: React.FC = () => {
 
     return (
         <QuotesSection ref={sectionRef}>
-            <QuotesContainer ref={containerRef} translateX={translateX} isSticky={isSticky}>
-                {allQuotes}
+            <QuotesContainer>
+                <QuotesDiv translateX={translateX1} marginLeft={'100vw'}>
+                    {allQuotes1}
+                </QuotesDiv>
+                <QuotesDiv translateX={translateX2} marginLeft={'200vw'}>
+                    {allQuotes2}
+                </QuotesDiv>
+                <QuotesDiv translateX={translateX3} marginLeft={'125vw'}>
+                    {allQuotes3}
+                </QuotesDiv>
             </QuotesContainer>
         </QuotesSection>
     );
