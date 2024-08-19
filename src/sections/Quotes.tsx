@@ -19,7 +19,7 @@ const Quotes: React.FC = () => {
         },
         {
             quote: "HKW was a real pleasure to work with.",
-            author: "Paul Sebastin",
+            author: "Paul Sebastien",
             role: "CEO AT SQORD",
         },
         {
@@ -27,6 +27,41 @@ const Quotes: React.FC = () => {
             author: "Eben Cole",
             role: "Cole Music Co.",
         },
+        {
+            quote: "HKW has been an incredibly thoughtful partner.",
+            author: "Julia Cohen Sebastien",
+            role: "Co-Founder and CEO at Grayce",
+        },
+        {
+            quote: "They were extremely quick and put out an incredible product.",
+            author: "Ryan Kerrigan",
+            role: "FOUNDER & EXECUTIVE DIRECTOR AT PEAK7",
+        },
+        {
+            quote: "We are grateful we selected HKW...",
+            author: "Nancy Janzen",
+            role: "CEO AT MAPLEWOOD",
+        },
+        {
+            quote: "HKW felt like full-fledged members of my team.",
+            author: "Paula Mantle",
+            role: "Marketing Director at Conviva",
+        },
+        {
+            quote: "The whole HKW team was fantastic to work with!",
+            author: "Jonathan Birnbaum",
+            role: "EXECUTIVE DIRECTOR AT ISL",
+        },
+        {
+            quote: "We communicate for a living, but HKW helped us crystalize our brand message.",
+            author: "Kevin Pedraja",
+            role: "Partner at Voxus PR",
+        },
+        {
+            quote: "Working with HKW was an incredible experience.",
+            author: "Shomya Tripathy",
+            role: "Director of Policy and Civic Engagement at Asian Counseling and Referral Service",
+        }
     ];
 
     let offset = 0;
