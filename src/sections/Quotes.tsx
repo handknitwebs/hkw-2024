@@ -168,9 +168,9 @@ const Quotes: React.FC = () => {
                 const scrollDistance = window.innerHeight - sectionRect.top;
 
                 // Adjust the multipliers for different speeds
-                setTranslateX1(scrollDistance * 1.5);
-                setTranslateX2(scrollDistance * 1.25);
-                setTranslateX3(scrollDistance * 1.75);
+                setTranslateX1(scrollDistance * 1.25);
+                setTranslateX2(scrollDistance * 1.75);
+                setTranslateX3(scrollDistance * 1.5);
                 setTranslateX4(scrollDistance * 1);
             }
         };
