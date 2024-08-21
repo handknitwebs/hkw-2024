@@ -83,7 +83,7 @@ const Quotes: React.FC = () => {
             author: "Shomya Tripathy",
             role: "Director of Policy and Civic Engagement at Asian Counseling and Referral Service",
             fontSize: "4.5rem",
-            shift: "top",
+            shift: "bottom",
         }
     ];
 
@@ -107,10 +107,10 @@ const Quotes: React.FC = () => {
 
     const QuotesSection = styled(Section)`
         margin: 5rem 0;
-        height: calc(100vh + ${(1 * characterQuote).toString()}rem);
+        height: calc(100vh + ${(.95 * characterQuote).toString()}rem);
         position: relative;
         @media (max-width: 1080px) {
-            height: calc(100vh + ${quotes.length * 85}px);
+            height: calc(60vh + ${(.95 * characterQuote).toString()}rem);
         }
     `;
 
@@ -134,14 +134,17 @@ const Quotes: React.FC = () => {
         }
     `;
 
-    const QuotesDiv = styled(Container)<{ translateX: number, marginLeft: string }>`
+    const QuotesDiv = styled(Container)<{ translateX: number, marginLeft: string, marginLeftMobile: string }>`
         display: flex;
         gap: 4rem;
         transform: translateX(${props => `-${props.translateX}px`});
-        opacity: ${props => 0.25 + (props.translateX / window.innerWidth) * 0.75};
+        opacity: ${props => 0.2 + (props.translateX / window.innerWidth) * 0.75};
         transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 4s ease-in-out;
         align-items: flex-start;
         margin-left: ${props => `${props.marginLeft}`};
+        @media (max-width: 600px) {
+            margin-left: ${props => `${props.marginLeftMobile}`};
+        }
     `;
 
     const QuotesContainer = styled(Container)`
@@ -169,9 +172,9 @@ const Quotes: React.FC = () => {
 
                 // Adjust the multipliers for different speeds
                 setTranslateX1(scrollDistance * 1.25);
-                setTranslateX2(scrollDistance * 1.75);
+                setTranslateX2(scrollDistance * 2);
                 setTranslateX3(scrollDistance * 1.5);
-                setTranslateX4(scrollDistance * 1);
+                setTranslateX4(scrollDistance * 1.15);
             }
         };
 
@@ -183,16 +186,16 @@ const Quotes: React.FC = () => {
         <QuotesSection ref={sectionRef}>
             <QuotesContainer>
                 <QuotesTitle>Humble Kind Words</QuotesTitle>
-                <QuotesDiv translateX={translateX1} marginLeft={'100vw'}>
+                <QuotesDiv translateX={translateX1} marginLeft={'100vw'} marginLeftMobile={'200vw'}>
                     {allQuotes1}
                 </QuotesDiv>
-                <QuotesDiv translateX={translateX2} marginLeft={'120vw'}>
+                <QuotesDiv translateX={translateX2} marginLeft={'120vw'} marginLeftMobile={'240vw'}>
                     {allQuotes2}
                 </QuotesDiv>
-                <QuotesDiv translateX={translateX3} marginLeft={'120vw'}>
+                <QuotesDiv translateX={translateX3} marginLeft={'120vw'} marginLeftMobile={'240vw'}>
                     {allQuotes3}
                 </QuotesDiv>
-                <QuotesDiv translateX={translateX4} marginLeft={'115vw'}>
+                <QuotesDiv translateX={translateX4} marginLeft={'115vw'} marginLeftMobile={'230vw'}>
                     {allQuotes4}
                 </QuotesDiv>
             </QuotesContainer>
