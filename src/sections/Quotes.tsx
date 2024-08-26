@@ -185,7 +185,7 @@ const Quotes: React.FC = () => {
     return (
         <QuotesSection ref={sectionRef}>
             <QuotesContainer>
-                <QuotesTitle>Humble Kind Words</QuotesTitle>
+                <QuotesTitle>Humbling Kind Words</QuotesTitle>
                 <QuotesDiv translateX={translateX1} marginLeft={'100vw'} marginLeftMobile={'200vw'}>
                     {allQuotes1}
                 </QuotesDiv>
