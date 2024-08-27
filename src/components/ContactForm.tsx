@@ -48,10 +48,11 @@ type Inputs = {
 
 interface ContactFormProps {
   onFormSubmit: () => void;
+  handleBuildPlane: () => void;
   isFormSubmitted: boolean;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted, handleBuildPlane }) => {
   const [isSent, setIsSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -105,6 +106,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted
         setIsSent(true);
         setIsSubmitting(false);
         onFormSubmit();
+        handleBuildPlane();
         console.log('email sent');
       })
       .catch((error) => {

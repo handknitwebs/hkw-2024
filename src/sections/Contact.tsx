@@ -45,14 +45,14 @@ const FormContainer = styled(Container)<{ isFormSubmitted: boolean }>`
   padding: 2.5rem;
   gap: 2.5rem;
   flex-direction: column;
+  text-align: left;
   @media (max-width: 1080px) {
     grid-column: 1 / 13;
     padding: 40px 20px;
   }
-  max-height: ${({ isFormSubmitted }) => (isFormSubmitted ? '260px' : '100rem')};
+  max-height: ${({ isFormSubmitted }) => (isFormSubmitted ? '30rem' : '100rem')};
   height: 100%;
   overflow: hidden;
-  // opacity: ${({ isFormSubmitted }) => (isFormSubmitted ? '1' : '0')};
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
   position: relative; /* Ensure children are positioned relative to this container */
 `;
@@ -175,11 +175,12 @@ const Contact: React.FC = () => {
           </FormTitleTexts>
         </FormHeaderContainer>
         <FormContainer className="form-container" ref={formContainerRef} isFormSubmitted={isFormSubmitted}>
-          {/* <ContactForm onFormSubmit={handleFormSubmit} isFormSubmitted={isFormSubmitted} /> */}
           <PaperPlane onFormSubmit={handleFormSubmit} isFormSubmitted={isFormSubmitted}/>
-          {/* <SentMessage className={showSentMessage ? 'visible' : ''}><SentMessageText>
-            Thanks for reaching out, we’ll get back to you soon.</SentMessageText>
-          </SentMessage> */}
+          <SentMessage className={showSentMessage ? 'visible' : ''}>
+            <SentMessageText>
+              Thanks for reaching out, we’ll get back to you soon.
+            </SentMessageText>
+          </SentMessage>
         </FormContainer>
       </ContactSection>
     </>

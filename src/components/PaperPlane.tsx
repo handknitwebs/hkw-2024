@@ -15,7 +15,7 @@ const PaperPlane: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted 
     const bottomLeftRef = useRef<HTMLDivElement>(null);
     const bottomRightRef = useRef<HTMLDivElement>(null);
 
-    const handleClick = () => {
+    const handleBuildPlane = () => {
         setTimeout(() => {
             // Flip the div 180 degrees
             plateRef.current?.classList.remove('front');
@@ -44,30 +44,21 @@ const PaperPlane: React.FC<ContactFormProps> = ({ onFormSubmit, isFormSubmitted 
                                     containerRef.current?.classList.add('fly_away_first');
                                     setTimeout(() => {
                                         containerRef.current?.classList.add('fly_away');
-                                        setTimeout(() => {
-                                            // Reset to the initial state
-                                            plateRef.current?.classList.add('front');
-                                            containerRef.current?.classList.remove('fly_away', 'fly_away_first', 'hover');
-                                            containerRef.current?.classList.add('beginning');
-                                            [topLeftRef, topRightRef, bottomLeftRef, bottomRightRef].forEach(ref => {
-                                                ref.current?.classList.remove('curved');
-                                            });
-                                        }, 3000);
                                     }, 600);
-                                }, 2000);
-                            }, 2800);
-                        }, 650); // Adjust timing to stagger bottom right corner
-                    }, 650); // Adjust timing to stagger bottom left corner
-                }, 350); // Adjust timing to stagger top right corner
-            }, 350); // Adjust timing to start with top left corner
+                                }, 1600);
+                            }, 2000);
+                        }, 500); // Adjust timing to stagger bottom right corner
+                    }, 500); // Adjust timing to stagger bottom left corner
+                }, 150); // Adjust timing to stagger top right corner
+            }, 150); // Adjust timing to start with top left corner
         }, 200); // Initial delay
     };
 
     return (
         <div className="plane-parent">
             <div id="plate" className="front" ref={plateRef}>  
-                <ContactForm onFormSubmit={onFormSubmit} isFormSubmitted={isFormSubmitted}/>
-                <button className="send" onClick={handleClick}>Send it</button> <br/>
+                <ContactForm onFormSubmit={onFormSubmit} handleBuildPlane={handleBuildPlane} isFormSubmitted={isFormSubmitted}/>
+                {/* <button className="send" onClick={handleClick}>Send it</button> <br/> */}
             </div>
             <div id="container" className="beginning" ref={containerRef}>
                 <div id="left-wing">
