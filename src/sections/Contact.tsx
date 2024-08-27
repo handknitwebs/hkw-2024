@@ -6,6 +6,7 @@ import TextColoredPunct from '../styled_components/TextColorPunct';
 import ColoredPunct from '../styled_components/ColoredPunct';
 import Text from '../styled_components/Text';
 import ContactForm from '../components/ContactForm';
+import PaperPlane from "../components/PaperPlane"
 import SentMessage from '../styled_components/SentMessage';
 
 const ContactSection = styled(Section)`
@@ -48,10 +49,10 @@ const FormContainer = styled(Container)<{ isFormSubmitted: boolean }>`
     grid-column: 1 / 13;
     padding: 40px 20px;
   }
-  max-height: ${({ isFormSubmitted }) => (isFormSubmitted ? '8rem' : '100rem')};
+  max-height: ${({ isFormSubmitted }) => (isFormSubmitted ? '260px' : '100rem')};
   height: 100%;
   overflow: hidden;
-  opacity: ${({ isFormSubmitted }) => (isFormSubmitted ? '1' : '0')};
+  // opacity: ${({ isFormSubmitted }) => (isFormSubmitted ? '1' : '0')};
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
   position: relative; /* Ensure children are positioned relative to this container */
 `;
@@ -173,11 +174,12 @@ const Contact: React.FC = () => {
             <FormSubHeader>The world changes one conversation<br className="mobile-only"></br>at a time.</FormSubHeader>
           </FormTitleTexts>
         </FormHeaderContainer>
-        <FormContainer ref={formContainerRef} isFormSubmitted={isFormSubmitted}>
-          <ContactForm onFormSubmit={handleFormSubmit} isFormSubmitted={isFormSubmitted} />
-          <SentMessage className={showSentMessage ? 'visible' : ''}><SentMessageText>
+        <FormContainer className="form-container" ref={formContainerRef} isFormSubmitted={isFormSubmitted}>
+          {/* <ContactForm onFormSubmit={handleFormSubmit} isFormSubmitted={isFormSubmitted} /> */}
+          <PaperPlane onFormSubmit={handleFormSubmit} isFormSubmitted={isFormSubmitted}/>
+          {/* <SentMessage className={showSentMessage ? 'visible' : ''}><SentMessageText>
             Thanks for reaching out, we’ll get back to you soon.</SentMessageText>
-          </SentMessage>
+          </SentMessage> */}
         </FormContainer>
       </ContactSection>
     </>
