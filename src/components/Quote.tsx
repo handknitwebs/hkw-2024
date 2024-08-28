@@ -21,11 +21,13 @@ const QuoteBlock = styled(Container)<{ shift: string; }>`
     flex-wrap: nowrap;
     gap: 20px;
     margin: ${props => props.shift === "top" ? '-2rem 0 0 0' :  props.shift === "bottom" ? '0 0 -2rem 0' : 'auto'};
+    background: transparent;
 `;
 
 const QuoteHolder = styled(Container)`
     display: flex;
     flex-direction: column;
+    background: transparent;
 `
 
 const QuoteText = styled(Text)<{ fontSize: string; }>`
