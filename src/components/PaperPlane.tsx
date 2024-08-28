@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import ContactForm from '../components/ContactForm';
-import "../css/PaperPlaneStyling.css";
+// import "../css/PaperPlaneStyling.css";
+import "../css/planeStyling2.css"
 
 interface ContactFormProps {
     onFormSubmit: () => void;
