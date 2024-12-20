@@ -107,6 +107,27 @@ const SentMessageText = styled(Text)`
   text-align: center;
 `
 
+const FooterSection = styled(Container)`
+  display: grid;
+  grid-column: 1 / 13;
+  font-size: 0.75rem;
+  justify-content: end;
+`;
+
+const FooterText = styled(Container)`
+  padding: 1rem 0;
+`;
+
+const FooterLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+  }
+`;
+  
+
 const Contact: React.FC = () => {
   const formHeaderRef = useRef<HTMLDivElement>(null);
   const formContainerRef = useRef<HTMLDivElement>(null);
@@ -180,6 +201,9 @@ const Contact: React.FC = () => {
           </SentMessage>
         </FormContainer>
       </ContactSection>
+			<FooterSection>
+				<FooterText>Copyright 2024 HKW | <FooterLink href="/policy/">Policies</FooterLink></FooterText>
+			</FooterSection>
     </>
   );
 };
