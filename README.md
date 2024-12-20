@@ -1,3 +1,13 @@
+# HKW 2024 SITE
+
+Notes: 
+
+`npm run dev` for local dev environment
+`npm run build` to build the assets to deploy
+
+when deploying, in the vite.config.ts file, comment out the `base: "/hkw-2024/",` line, and also update the src/App.tsx file `<Router basename{"/hkw-2024/"}>` line to `<Router basename{"/"}>` to allow for the proper routing on the live site. but keep the `hkw-2024` lines to allow for github pages to work properly previewing the site there.
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
