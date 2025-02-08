@@ -9,7 +9,7 @@ const outDir = resolve(__dirname, 'dist')
 export default defineConfig({
   // remove base and run build if pushing to bluehost -- grab files from dist 
   root,
-  base: "/hkw-2024/",
+  //base: "/hkw-2024/",
   plugins: [react()],
   build: {
     outDir,

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { ThemeProvider } from '@emotion/react'; // allows for theme change
 import LandingPage from "./pages/LandingPage";
+import PolicyPage from "./pages/PolicyPage";
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,10 +25,11 @@ const App: React.FC = () => {
     <ThemeProvider theme={themeMap[theme]}>
       <GlobalStyles />
       {/* need to keep the route in the Router for deployment https://stackoverflow.com/questions/74518887/blank-page-when-deploying-a-react-app-to-github-pages-and-vite  */}
-      <Router basename={"/hkw-2024/"}>
+      <Router basename={"/"}>
       {/* <Router>  */}
         <Routes>
           <Route path="/" element={<LandingPage contactRef={contactRef} />} />
+          <Route path="/policy" element={<PolicyPage contactRef={contactRef} />} />
         </Routes>
       </Router>
     </ThemeProvider>

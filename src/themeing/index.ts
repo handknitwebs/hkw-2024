@@ -26,6 +26,9 @@ export interface Theme {
       fontWeight: string;
       lineHeight: string;
     }
+    li: {
+      listStyle: string;
+    }
   }
   
   export { default as darkTheme } from './1darkTheme';

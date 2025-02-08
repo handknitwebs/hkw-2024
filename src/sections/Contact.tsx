@@ -110,20 +110,27 @@ const SentMessageText = styled(Text)`
 const FooterSection = styled(Container)`
   display: grid;
   grid-column: 1 / 13;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   justify-content: end;
+  @media (max-width: 1200px) {
+    font-size: 2rem;
+  }
 `;
 
 const FooterText = styled(Container)`
-  padding: 1rem 0;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 `;
 
 const FooterLink = styled.a`
   color: #fff;
   text-decoration: none;
 
-  &:hover {
-    color: #fff;
+  -moz-transition:color .2s ease-in;
+  -o-transition:color .2s ease-in;
+  -webkit-transition:color .2s ease-in;
+  &:hover { 
+    color: rgb(255, 26, 53);
   }
 `;
   
@@ -202,7 +209,7 @@ const Contact: React.FC = () => {
         </FormContainer>
       </ContactSection>
 			<FooterSection>
-				<FooterText>Copyright 2024 HKW | <FooterLink href="/policy/">Policies</FooterLink></FooterText>
+				<FooterText>Copyright 2024 HKW&nbsp; &nbsp;|&nbsp; &nbsp;<FooterLink href="/policy/">Policies</FooterLink></FooterText>
 			</FooterSection>
     </>
   );
